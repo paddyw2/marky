@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if test "$#" -ne 2; then
+    echo 'Welcome to Marky!'
+    exit
+fi
+
+filename="$1"
+docxname="$2"
+echo 'Creating file...'
+python3 ~/.marky/scripts/main.py $filename $docxname
+textutil -convert docx $docxname.html
+rm $docxname.html
+echo 'Finished'
+
